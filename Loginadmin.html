@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="administrador/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="administrador/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="administrador/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="administrador/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="administrador/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="administradorvendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="administrador/css/util.css">
+	<link rel="stylesheet" type="text/css" href="administrador/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="bg-contact2" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-contact2">
+			<div class="wrap-contact2">
+				<div class="contact2-form validate-form">
+					<span class="contact2-form-title">
+						Inicio sesion administrador
+					</span>
+
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2" type="text" name="name" id="emaillogin">
+						<span class="focus-input2" data-placeholder="Email"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input2" type="text" name="email" id="clavelogin">
+						<span class="focus-input2" data-placeholder="Clave"></span>
+					</div>
+
+					
+
+					<div class="container-contact2-form-btn">
+						<div class="wrap-contact2-form-btn">
+							<div class="contact2-form-bgbtn"></div>
+							<button class="contact2-form-btn" onclick="but()">
+								Envie sus datos
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="administrador/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="administrador/vendor/bootstrap/js/popper.js"></script>
+	<script src="administrador/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="administrador/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="administrador/js/main.js"></script>
+	<script src="formularioadministrador.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+
+
+
+		let imagenenbase64 = "";
+	$("#imgpe").change(function(){
+	readURL(this);
+	});
+	function readURL(input) {
+
+if (input.files && input.files[0]) {
+	var reader = new FileReader();
+	reader.onload = function (e) {
+	imagenenbase64=e.target.result;
+
+}
+	reader.readAsDataURL(input.files[0]);
+}
+}
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+	<script type="text/javascript">
+		function but(){
+			let admactual = new _adm('0',
+        "",
+              document.getElementById("clavelogin").value,
+              document.getElementById("emaillogin").value,
+              "",
+      ""
+        
+        );
+        admactual.Login().then(function(response) {
+  console.log("Success!", response);
+            alert("login con éxito");
+            localStorage.setItem("Usuariologueado",JSON.stringify(response));
+            location.href='index.html';
+          
+}, function(error) {
+  console.error("Failed!", error);
+             alert("Error " + error);
+               
+});
+
+		}
+		
+	</script>
+</body>
+</html>
